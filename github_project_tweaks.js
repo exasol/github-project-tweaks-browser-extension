@@ -71,7 +71,6 @@ function registerItemCountObservers() {
         const counterNode = getChildElementByXpath(columnNode, relativeItemCounterXPath);
         const observer = new MutationObserver(callback);
         observer.observe(counterNode, itemCountObserverConfig)
-        //checkItemCounter(counterNode, counterNode.textContent)
         columnNode = columnIterator.iterateNext();
     }
 }
