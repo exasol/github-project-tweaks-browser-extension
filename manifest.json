@@ -5,8 +5,8 @@
   "description": "Adds WiP limits to GitHub project boards",
   "content_scripts": [
     {
-      "matches": ["*://*.github.com/*"],
-      "js": ["board_tweaks.js"]
+      "matches": ["*://*.github.com/orgs/*/projects/*/views/*"],
+      "js": ["github_project_tweaks.js"]
     }
   ]
 }
