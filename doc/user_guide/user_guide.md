@@ -2,7 +2,12 @@
 
 ## Installation
 
-TODO: https://github.com/exasol/github-project-tweaks-browser-extension/issues/3
+* Download `.xpi` file from the latest release of this project on GitHub
+* Open the add-on settings or browse to `about:addons`
+* Click the gear icon next to "Manage Your Extensions"
+* In the pop-up menu click "Install Add-on From File..."
+* Pick the XPI file
+* Click "Open"
 
 ## Configuration of the Board
 
