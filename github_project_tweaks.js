@@ -1,7 +1,7 @@
 // This regular expression finds the WiP limit in the column description:
-const wipLimitRegExp = new RegExp("≤ *([0-9]+)")
-const boardColumnXPath = '//*[@data-board-column]'
-const relativeItemCounterXPath = './/*[@data-testid="column-items-counter"]'
+const wipLimitRegExp = /≤ *(\d+)/;
+const boardColumnXPath = '//*[@data-board-column]';
+const relativeItemCounterXPath = './/*[@data-testid="column-items-counter"]';
 
 function getChildElementByXpath(parent, path) {
   return document.evaluate(path, parent, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
@@ -15,12 +15,14 @@ function getAllBoardColumns() {
     return document.evaluate(boardColumnXPath, document, null, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
 }
 
+// Read the value of the WiP limit from the description field of the board column.
+// If there is no explicit limit, return 0.
 function parseWipLimit(columnNode) {
     const columnDescriptionNode = getChildElementByXpath(columnNode, './span');
     const columnDescription = columnDescriptionNode.textContent;
     const match = columnDescription.match(wipLimitRegExp);
     if (match) {
-        return match[1];
+        return parseInt(match[1]);
     } else {
         return 0
     }
@@ -39,6 +41,9 @@ const callback = (mutationList, observer) => {
     }
 };
 
+// Check the value in the item counter and compare it with the WiP limit.
+// If the WiP limit is exceeded, highlight the offending column on the Kanban board.
+// Otherwise reset the style to the default.
 function checkItemCounter(counterNode, newCounterValue) {
     const parentColumnNode = counterNode.parentNode.parentNode.parentNode.parentNode;
     const wipLimit = parseWipLimit(parentColumnNode);
@@ -57,13 +62,15 @@ function highlightExceededWip(columnNode, counterNode) {
     columnNode.style.border = "5px solid red"
 }
 
+// The original column does not have an element style. The default style is set via CSS class.
+// So deleting the element style resets the column to its original look.
 function resetStyle(columnNode, counterNode) {
     counterNode.style.backgroundColor = null;
     counterNode.style.color = null;
     columnNode.style.border = null;
 }
 
-
+// Find all board columns and register an observer for each item counter field.
 function registerItemCountObservers() {
     const columnIterator = getAllBoardColumns();
     let columnNode = columnIterator.iterateNext();
@@ -74,5 +81,7 @@ function registerItemCountObservers() {
         columnNode = columnIterator.iterateNext();
     }
 }
+
+document.body.style.border = "5px solid green"
 
 registerItemCountObservers()
