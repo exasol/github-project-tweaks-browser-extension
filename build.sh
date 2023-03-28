@@ -1,7 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 # This simple build script determines the version number from the Manifest (to avoid
 # inconsistencies) and packs the files that make up the extension into a ZIP archive with an '.xpi'
 # suffix.
+
+set -o errexit
+set -o nounset
+set -o pipefail
 
 readonly BUILD_DIR="build"
 readonly MANIFEST='manifest.json'

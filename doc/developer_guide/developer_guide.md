@@ -25,7 +25,7 @@ The test is fairly trivial anyway:
 
 1. Create a [GitHub project](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
 2. Create a Kanban board (the default board with its three columns is fine)
-3. Add a WiP limit to the description of the "In Progress" column by adding `(≤ 1)`
+3. Add a WiP limit to the description of the "In Progress" column by appending `(≤ 1)`
 4. Create the first card on the board in the "Todo" column by clicking the "+" icon
    ![Adding the first card](test_adding_first_card.png)
 5. Move first card to "In Progress"
