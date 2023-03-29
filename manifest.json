@@ -9,7 +9,10 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://*.github.com/orgs/*/projects/*/views/*"],
+      "matches": [
+        "*://*.github.com/orgs/*/projects/*",
+        "*://*.github.com/orgs/*/projects/*/views/*"
+      ],
       "js": ["github_project_tweaks.js"]
     }
   ]
