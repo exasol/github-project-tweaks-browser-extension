@@ -33,7 +33,7 @@ The test is fairly trivial anyway:
 7. Create a second card
 8. Move second card to "In Progress"
 9. "In Progress" column must be highlighted
-   ![Movint the second card to in progress](img.png)
+   ![Movint the second card to in progress](wip-limit_exceeded.png)
 10. Move first card to "Done"
 11. "In Progress" column must return to original style
 
