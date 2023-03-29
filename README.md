@@ -18,11 +18,11 @@ Best case scenario this extension will be obsolete one day because GitHub offers
 
 ## Privacy
 
-The "GitHub Project Tweaks" browser extension does not collect any data, private or otherwise. No tracking information, usage data or other metadata.
+The "GitHub Project Tweaks" browser extension does not collect or store any data.
 
-To operate, the extension reads the page structure of the GitHub project boards you load in your browser, in order to be able to improve the way the page is presented (e.g. by highlighting a board column where the work-in-progress limit is exceeded). The change in content is limited to your browser instance.
+The data that is processed between the servers hosting the website you are browsing and your browser instance itself.
 
-The extension does not have a home server. Communication stays between the servers of the page you are browsing and your browser instance.
+For the extension to operate, it reads the page structure of the GitHub projects you access via the browser.
 
 ## Documentation for Users
 
