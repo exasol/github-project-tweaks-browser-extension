@@ -1,4 +1,4 @@
-# GitHub Project Tweaks Browser Extension 0.1.0, released 2023-03-??
+# GitHub Project Tweaks Browser Extension 0.1.0, released 2023-03-29
 
 Code name: WiP Limit on Boards
 
