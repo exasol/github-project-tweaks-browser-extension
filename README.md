@@ -14,7 +14,7 @@ Best case scenario this extension will be obsolete one day because GitHub offers
 ## Roadmap
 
 - [x] [0.1.0](doc/changes/changes_0.1.0.md): WiP limits
-- [ ] 0.2.0: Helper for converting duration strings to days (and fractions of days
+- [ ] 0.2.0: Helper for converting duration strings to days (and fractions of days)
 - [ ] 1.0.0: Auto-link ticket references for faster access to tickets outside GitHub
 
 ## Runtime Dependencies
