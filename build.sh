@@ -7,12 +7,21 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
+readonly SOURCE_DIR="src"
 readonly BUILD_DIR="build"
-readonly MANIFEST='manifest.json'
+readonly MANIFEST="$SOURCE_DIR/manifest.json"
 
 # Parse the version number from the manifest file:
 get_version_from_manifest() {
-    grep '"version":' "$MANIFEST" | sed -e's/.*: *"//' -e's/".*//'
+  grep '"version":' "$MANIFEST" | sed -e's/.*: *"//' -e's/".*//'
+}
+
+clean_build_dir() {
+  if [[ -d "$BUILD_DIR" ]] && [[ "$(ls -A $BUILD_DIR)" ]]
+  then
+    echo "Cleaning up build directory '$BUILD_DIR'."
+    rm "$BUILD_DIR"/*
+  fi
 }
 
 VERSION=$(get_version_from_manifest); readonly VERSION
@@ -20,6 +29,9 @@ readonly EXTENSION_ARCHIVE="$BUILD_DIR/github_project_tweaks_$VERSION.xpi"
 
 mkdir -p "$BUILD_DIR"
 
+clean_build_dir
+
 echo "Packing extension files into archive '$EXTENSION_ARCHIVE'."
 
-zip "$EXTENSION_ARCHIVE" manifest.json github_project_tweaks.js icon*.png
+cd "$SOURCE_DIR"
+zip "../$EXTENSION_ARCHIVE" ./*
