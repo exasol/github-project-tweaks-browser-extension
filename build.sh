@@ -20,7 +20,7 @@ clean_build_dir() {
   if [[ -d "$BUILD_DIR" ]] && [[ "$(ls -A $BUILD_DIR)" ]]
   then
     echo "Cleaning up build directory '$BUILD_DIR'."
-    rm "$BUILD_DIR/*"
+    rm "$BUILD_DIR"/*
   fi
 }
 
@@ -34,4 +34,4 @@ clean_build_dir
 echo "Packing extension files into archive '$EXTENSION_ARCHIVE'."
 
 cd "$SOURCE_DIR"
-zip "../$EXTENSION_ARCHIVE" *
+zip "../$EXTENSION_ARCHIVE" ./*
